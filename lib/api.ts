@@ -1,0 +1,67 @@
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+export type BusinessInfo = {
+  name: string;
+  tagline: string | null;
+  about_text: string | null;
+  phone: string | null;
+  whatsapp: string | null;
+  instagram_url: string | null;
+  address_line: string | null;
+  city: string | null;
+  map_lat: number | null;
+  map_lng: number | null;
+  hours: Record<string, string> | null;
+  hero_image_url: string | null;
+};
+
+export type MenuItem = {
+  id: number;
+  name: string;
+  description: string | null;
+  price: number;
+  image_url: string | null;
+  is_available: boolean;
+  sort_order: number;
+};
+
+export type MenuCategory = {
+  id: number;
+  name: string;
+  sort_order: number;
+  items: MenuItem[];
+};
+
+export type GalleryImage = {
+  id: number;
+  image_url: string | null;
+  caption: string | null;
+  category: "food" | "interior" | "people";
+  sort_order: number;
+};
+
+async function apiFetch<T>(path: string, locale: string): Promise<T> {
+  const separator = path.includes("?") ? "&" : "?";
+  const res = await fetch(`${API_URL}${path}${separator}locale=${locale}`, {
+    next: { revalidate: 60 },
+  });
+
+  if (!res.ok) {
+    throw new Error(`API request failed: ${path} (${res.status})`);
+  }
+
+  const json = await res.json();
+  return json.data as T;
+}
+
+export function getBusinessInfo(locale: string) {
+  return apiFetch<BusinessInfo>("/business-info", locale);
+}
+
+export function getMenu(locale: string) {
+  return apiFetch<MenuCategory[]>("/menu", locale);
+}
+
+export function getGallery(locale: string) {
+  return apiFetch<GalleryImage[]>("/gallery", locale);
+}
