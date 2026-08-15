@@ -1,1 +1,26 @@
-{}
+{
+  "nav": {
+    "menu": "Menyu",
+    "visit": "Bizə baş çəkin"
+  },
+  "menuItem": {
+    "backToMenu": "Menyuya qayıt",
+    "unavailable": "Hazırda mövcud deyil",
+    "exploreMore": "Menyunun qalanına baxın"
+  },
+  "about": {
+    "title": "Bizim Hekayəmiz"
+  },
+  "gallery": {
+    "title": "Qalereya"
+  },
+  "location": {
+    "title": "Bizə baş çəkin",
+    "hours": "İş saatları",
+    "mapUnavailable": "Xəritə mövcud deyil"
+  },
+  "hero": {
+    "viewMenu": "Menyuya bax",
+    "visitUs": "Bizə baş çəkin"
+  }
+}

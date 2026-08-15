@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getMenuItem } from "@/lib/api";
+import { getTranslations } from "next-intl/server";
 
 export default async function MenuItemPage({
   params,
@@ -9,6 +10,7 @@ export default async function MenuItemPage({
 }) {
   const { locale, id } = await params;
   const result = await getMenuItem(id, locale);
+  const t = await getTranslations("menuItem");
 
   if (!result) notFound();
 
@@ -21,7 +23,7 @@ export default async function MenuItemPage({
           href={`/${locale}/menu`}
           className="mb-8 inline-flex items-center gap-1 text-sm text-espresso/60 transition hover:text-espresso"
         >
-          ← Back to menu
+          ← {t("backToMenu")}
         </Link>
 
         <div className="grid gap-10 sm:grid-cols-2 sm:items-center">
@@ -58,7 +60,7 @@ export default async function MenuItemPage({
 
             {!item.is_available && (
               <p className="mt-6 inline-block rounded-full bg-red-100 px-3 py-1 text-sm font-medium text-red-600">
-                Currently unavailable
+                {t("unavailable")}
               </p>
             )}
 
@@ -67,7 +69,7 @@ export default async function MenuItemPage({
                 href={`/${locale}/menu`}
                 className="inline-block rounded-full bg-terracotta px-6 py-3 text-sm font-medium text-cream transition hover:bg-terracotta-dark"
               >
-                Explore more of the menu
+                {t("exploreMore")}
               </Link>
             </div>
           </div>

@@ -1,1 +1,26 @@
-{}
+{
+  "nav": {
+    "menu": "Menu",
+    "visit": "Visit Us"
+  },
+  "menuItem": {
+    "backToMenu": "Back to menu",
+    "unavailable": "Currently unavailable",
+    "exploreMore": "Explore more of the menu"
+  },
+  "about": {
+    "title": "Our Story"
+  },
+  "gallery": {
+    "title": "Gallery"
+  },
+  "location": {
+    "title": "Visit Us",
+    "hours": "Hours",
+    "mapUnavailable": "Map unavailable"
+  },
+  "hero": {
+    "viewMenu": "View Menu",
+    "visitUs": "Visit Us"
+  }
+}

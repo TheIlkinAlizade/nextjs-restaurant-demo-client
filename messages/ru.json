@@ -1,1 +1,26 @@
-{}
+{
+  "nav": {
+    "menu": "Меню",
+    "visit": "Посетите нас"
+  },
+  "menuItem": {
+    "backToMenu": "Назад в меню",
+    "unavailable": "Сейчас недоступно",
+    "exploreMore": "Смотреть остальное меню"
+  },
+  "about": {
+    "title": "Наша История"
+  },
+  "gallery": {
+    "title": "Галерея"
+  },
+  "location": {
+    "title": "Посетите нас",
+    "hours": "Часы работы",
+    "mapUnavailable": "Карта недоступна"
+  },
+  "hero": {
+    "viewMenu": "Смотреть меню",
+    "visitUs": "Посетите нас"
+  }
+}

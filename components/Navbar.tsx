@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import ThemeToggle from "@/components/ThemeToggle";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 
@@ -13,6 +14,7 @@ export default function Navbar({
   businessName: string;
 }) {
   const [open, setOpen] = useState(false);
+  const t = useTranslations("nav");
 
   return (
     <header className="sticky top-0 z-50 border-b border-espresso/10 bg-cream/90 backdrop-blur">
@@ -26,10 +28,10 @@ export default function Navbar({
 
         <nav className="hidden gap-6 text-sm text-espresso/70 sm:flex">
           <Link href={`/${locale}/menu`} className="hover:text-espresso">
-            Menu
+            {t("menu")}
           </Link>
           <Link href={`/${locale}#location`} className="hover:text-espresso">
-            Visit
+            {t("visit")}
           </Link>
         </nav>
 
@@ -62,10 +64,10 @@ export default function Navbar({
         <div className="border-t border-espresso/10 bg-cream px-6 py-4 sm:hidden">
           <nav className="flex flex-col gap-4 text-sm text-espresso/80">
             <Link href={`/${locale}/menu`} onClick={() => setOpen(false)}>
-              Menu
+              {t("menu")}
             </Link>
             <Link href={`/${locale}#location`} onClick={() => setOpen(false)}>
-              Visit
+              {t("visit")}
             </Link>
           </nav>
           <div className="mt-4 flex items-center gap-3">

@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import type { BusinessInfo } from "@/lib/api";
 
 const DAY_LABELS: Record<string, string> = {
@@ -11,6 +14,8 @@ const DAY_LABELS: Record<string, string> = {
 };
 
 export default function Location({ business }: { business: BusinessInfo }) {
+  const t = useTranslations("location");
+
   const mapSrc =
     business.map_lat && business.map_lng
       ? "https://www.google.com/maps?q=" + business.map_lat + "," + business.map_lng + "&z=16&output=embed"
@@ -22,7 +27,7 @@ export default function Location({ business }: { business: BusinessInfo }) {
         <div>
           <span className="mb-3 inline-block h-px w-12 bg-terracotta" />
           <h2 className="mb-6 font-serif text-3xl font-semibold text-espresso">
-            Visit Us
+            {t("title")}
           </h2>
 
           <div className="space-y-1 text-espresso/80">
@@ -33,7 +38,7 @@ export default function Location({ business }: { business: BusinessInfo }) {
 
           {business.hours && (
             <div className="mt-6">
-              <h3 className="mb-2 font-medium text-espresso">Hours</h3>
+              <h3 className="mb-2 font-medium text-espresso">{t("hours")}</h3>
               <ul className="space-y-1 text-sm text-espresso/70">
                 {Object.entries(business.hours).map(([day, hours]) => (
                   <li key={day} className="flex justify-between gap-6">
@@ -51,7 +56,7 @@ export default function Location({ business }: { business: BusinessInfo }) {
             <iframe src={mapSrc} className="h-full w-full border-0" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
           ) : (
             <div className="flex h-full items-center justify-center text-sm text-espresso/40">
-              Map unavailable
+              {t("mapUnavailable")}
             </div>
           )}
         </div>
