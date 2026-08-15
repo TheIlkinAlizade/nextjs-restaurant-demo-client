@@ -1,16 +1,31 @@
 @import "tailwindcss";
 
-:root {
-  --background: #faf6f1;
-  --foreground: #2b2420;
+@custom-variant dark (&:where(.dark, .dark *));
 
-  --color-cream: #faf6f1;
-  --color-espresso: #2b2420;
-  --color-terracotta: #c1603c;
-  --color-terracotta-dark: #a34d2f;
-  --color-sage: #7a8b6f;
-  --color-stone-warm: #e8ddd0;
-  --color-stone-warm-light: #f3ece3;
+:root {
+  --background: #ffffff;
+  --foreground: #111111;
+
+  --color-cream: #ffffff;
+  --color-espresso: #111111;
+  --color-terracotta: #111111;
+  --color-terracotta-dark: #000000;
+  --color-sage: #6b6b6b;
+  --color-stone-warm: #f2f2f2;
+  --color-stone-warm-light: #f8f8f8;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #f5f5f5;
+
+  --color-cream: #0a0a0a;
+  --color-espresso: #f5f5f5;
+  --color-terracotta: #f5f5f5;
+  --color-terracotta-dark: #ffffff;
+  --color-sage: #a3a3a3;
+  --color-stone-warm: #1a1a1a;
+  --color-stone-warm-light: #151515;
 }
 
 @theme inline {
@@ -23,13 +38,14 @@
   --color-sage: var(--color-sage);
   --color-stone-warm: var(--color-stone-warm);
   --color-stone-warm-light: var(--color-stone-warm-light);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
-  --font-serif: var(--font-fraunces);
+  --font-serif: var(--font-playfair);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }

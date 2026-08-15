@@ -1,4 +1,4 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://127.0.0.1:8000/api";
 
 export type BusinessInfo = {
   name: string;
@@ -60,6 +60,15 @@ export function getBusinessInfo(locale: string) {
 
 export function getMenu(locale: string) {
   return apiFetch<MenuCategory[]>("/menu", locale);
+}
+
+export async function getMenuItem(id: string, locale: string) {
+  const categories = await getMenu(locale);
+  for (const category of categories) {
+    const item = category.items.find((i) => String(i.id) === id);
+    if (item) return { item, categoryName: category.name };
+  }
+  return null;
 }
 
 export function getGallery(locale: string) {

@@ -23,7 +23,7 @@ export default async function Home({
     <main className="flex flex-1 flex-col bg-cream">
       <Hero business={business} />
       <About business={business} />
-      <Menu menu={menu} />
+      <Menu menu={menu} locale={locale} />
       <Gallery images={gallery} />
       <Location business={business} />
       <Footer business={business} />
