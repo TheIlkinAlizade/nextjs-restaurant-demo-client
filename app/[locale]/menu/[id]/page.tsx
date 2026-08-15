@@ -16,50 +16,61 @@ export default async function MenuItemPage({
 
   return (
     <main className="flex flex-1 flex-col bg-cream">
-      <div className="mx-auto w-full max-w-3xl px-6 py-10">
+      <div className="mx-auto w-full max-w-5xl px-6 py-10">
         <Link
           href={`/${locale}/menu`}
-          className="mb-6 inline-block text-sm text-espresso/60 hover:text-espresso"
+          className="mb-8 inline-flex items-center gap-1 text-sm text-espresso/60 transition hover:text-espresso"
         >
           ← Back to menu
         </Link>
 
-        <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-stone-warm">
-          {item.image_url ? (
-            <img
-              src={item.image_url}
-              alt={item.name}
-              className="h-full w-full object-cover"
-            />
-          ) : (
-            <div className="flex h-full w-full items-center justify-center text-espresso/30">
-              Photo coming soon
-            </div>
-          )}
-        </div>
+        <div className="grid gap-10 sm:grid-cols-2 sm:items-center">
+          <div className="aspect-square overflow-hidden rounded-2xl bg-stone-warm sm:aspect-[4/5]">
+            {item.image_url ? (
+              <img
+                src={item.image_url}
+                alt={item.name}
+                className="h-full w-full object-cover"
+              />
+            ) : (
+              <div className="flex h-full w-full items-center justify-center text-espresso/30">
+                Photo coming soon
+              </div>
+            )}
+          </div>
 
-        <div className="mt-6">
-          <span className="text-sm uppercase tracking-wide text-terracotta">
-            {categoryName}
-          </span>
-          <div className="mt-1 flex items-baseline justify-between gap-4">
-            <h1 className="font-serif text-3xl font-semibold text-espresso">
+          <div>
+            <span className="text-xs font-medium uppercase tracking-widest text-espresso/40">
+              {categoryName}
+            </span>
+            <h1 className="mt-2 font-serif text-4xl font-semibold leading-tight text-espresso">
               {item.name}
             </h1>
-            <span className="whitespace-nowrap font-serif text-2xl text-terracotta">
+            <p className="mt-4 font-serif text-2xl text-terracotta">
               {item.price.toFixed(2)} ₼
-            </span>
+            </p>
+
+            {item.description && (
+              <p className="mt-6 text-base leading-relaxed text-espresso/70">
+                {item.description}
+              </p>
+            )}
+
+            {!item.is_available && (
+              <p className="mt-6 inline-block rounded-full bg-red-100 px-3 py-1 text-sm font-medium text-red-600">
+                Currently unavailable
+              </p>
+            )}
+
+            <div className="mt-8 border-t border-espresso/10 pt-6">
+              <Link
+                href={`/${locale}/menu`}
+                className="inline-block rounded-full bg-terracotta px-6 py-3 text-sm font-medium text-cream transition hover:bg-terracotta-dark"
+              >
+                Explore more of the menu
+              </Link>
+            </div>
           </div>
-          {item.description && (
-            <p className="mt-4 text-lg leading-relaxed text-espresso/70">
-              {item.description}
-            </p>
-          )}
-          {!item.is_available && (
-            <p className="mt-4 text-sm font-medium text-red-500">
-              Currently unavailable
-            </p>
-          )}
         </div>
       </div>
     </main>
