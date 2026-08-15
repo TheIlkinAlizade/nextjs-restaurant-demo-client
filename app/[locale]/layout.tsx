@@ -26,10 +26,35 @@ const playfair = Playfair_Display({
   weight: ["400", "500", "600", "700"],
 });
 
-export const metadata: Metadata = {
-  title: "Café Aurora",
-  description: "Coffee, pastries, and a place to slow down",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const business = await getBusinessInfo(locale);
+
+  return {
+    title: {
+      default: business.name,
+      template: `%s | ${business.name}`,
+    },
+    description: business.tagline ?? business.about_text ?? "Coffee, pastries, and a place to slow down.",
+    openGraph: {
+      title: business.name,
+      description: business.tagline ?? "",
+      images: business.hero_image_url ? [business.hero_image_url] : [],
+      locale,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: business.name,
+      description: business.tagline ?? "",
+      images: business.hero_image_url ? [business.hero_image_url] : [],
+    },
+  };
+}
 
 export default async function LocaleLayout({
   children,
