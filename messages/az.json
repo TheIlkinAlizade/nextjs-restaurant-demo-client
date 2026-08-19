@@ -22,5 +22,25 @@
   "hero": {
     "viewMenu": "Menyuya bax",
     "visitUs": "Bizə baş çəkin"
+  },
+  "contact": {
+    "title": "Bizimlə əlaqə saxlayın",
+    "name": "Adınız",
+    "email": "E-poçt",
+    "phone": "Telefon (istəyə bağlı)",
+    "message": "Mesajınız",
+    "send": "Göndər",
+    "sending": "Göndərilir...",
+    "success": "Təşəkkürlər, tezliklə sizinlə əlaqə saxlayacağıq.",
+    "error": "Nəsə səhv getdi. Zəhmət olmasa yenidən cəhd edin.",
+    "errors": {
+      "nameRequired": "Zəhmət olmasa adınızı daxil edin",
+      "nameTooLong": "Ad çox uzundur",
+      "emailRequired": "Zəhmət olmasa e-poçt daxil edin",
+      "emailInvalid": "Düzgün e-poçt daxil edin",
+      "phoneTooLong": "Telefon nömrəsi çox uzundur",
+      "messageRequired": "Zəhmət olmasa mesaj yazın",
+      "messageTooLong": "Mesaj çox uzundur (maks. 5000 simvol)"
+    }
   }
 }

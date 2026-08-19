@@ -22,5 +22,25 @@
   "hero": {
     "viewMenu": "View Menu",
     "visitUs": "Visit Us"
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "name": "Your name",
+    "email": "Email",
+    "phone": "Phone (optional)",
+    "message": "Your message",
+    "send": "Send",
+    "sending": "Sending...",
+    "success": "Thank you, we'll get back to you soon.",
+    "error": "Something went wrong. Please try again.",
+    "errors": {
+      "nameRequired": "Please enter your name",
+      "nameTooLong": "Name is too long",
+      "emailRequired": "Please enter your email",
+      "emailInvalid": "Please enter a valid email",
+      "phoneTooLong": "Phone number is too long",
+      "messageRequired": "Please enter a message",
+      "messageTooLong": "Message is too long (max 5000 characters)"
+    }
   }
 }

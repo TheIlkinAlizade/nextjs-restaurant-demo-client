@@ -74,3 +74,25 @@ export async function getMenuItem(id: string, locale: string) {
 export function getGallery(locale: string) {
   return apiFetch<GalleryImage[]>("/gallery", locale);
 }
+
+export type ContactPayload = {
+  name: string;
+  email: string;
+  phone?: string;
+  message: string;
+};
+
+export async function submitContact(payload: ContactPayload) {
+  const res = await fetch(`${API_URL}/contact`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) {
+    const errorBody = await res.json().catch(() => null);
+    throw new Error(errorBody?.message ?? "Failed to send message");
+  }
+
+  return res.json();
+}
